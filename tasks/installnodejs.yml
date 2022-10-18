@@ -1,0 +1,23 @@
+---
+    - name: Install NodeJS | Get latest version
+      uri:
+        url: https://api.github.com/repos/nodejs/node/releases/latest
+        body_format: json
+      register: page
+    - name: debug
+      debug: 
+        var: page.json.tag_name
+     
+    - name: Install NodeJS | Download latest version
+      get_url:
+        url: https://nodejs.org/dist/{{ page.json.tag_name }}/node-{{ page.json.tag_name }}.tar.gz
+        dest: /home/ub/ansible/nodejs
+        mode: '777'
+     
+    - name: Install NodeJS | Unarchive NodeJS
+      unarchive:
+        src: /home/ub/ansible/nodejs/node-v18.11.0.tar.gz
+        dest: /home/ub/ansible/nodejs-role/
+        mode: 777
+        remote_src: true
+       

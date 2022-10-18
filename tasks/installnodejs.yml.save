@@ -1,0 +1,8 @@
+vars:
+  packages: [nodejs, npm]
+
+  - name: Install NodeJS | Install node js
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop: "{{ packages }}"
