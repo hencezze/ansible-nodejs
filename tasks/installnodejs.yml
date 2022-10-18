@@ -10,14 +10,14 @@
      
     - name: Install NodeJS | Download latest version
       get_url:
-        url: https://nodejs.org/dist/{{ page.json.tag_name }}/node-{{ page.json.tag_name }}.tar.gz
+        url: https://nodejs.org/dist/{{ page.json.tag_name }}/node-{{ page.json.tag_name }}-linux-x64.tar.xz
         dest: /home/ub/ansible/nodejs
         mode: '777'
      
     - name: Install NodeJS | Unarchive NodeJS
       unarchive:
-        src: /home/ub/ansible/nodejs/node-v18.11.0.tar.gz
-        dest: /home/ub/ansible/nodejs-role/
-        mode: 777
+        src: /home/ub/ansible/nodejs/node-{{ page.json.tag_name }}-linux-x64.tar.xz
+        dest: /home/ub/ansible/
+        mode: '777'
         remote_src: true
        

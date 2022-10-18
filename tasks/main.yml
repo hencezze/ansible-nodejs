@@ -17,3 +17,14 @@
     
     - name: Install NodeJS
       import_tasks: installnodejs.yml
+ 
+    - name: Git clone
+      git:
+        repo: https://gitfront.io/r/user-6058779/jrgijZuoZWKG/nodejs-todo.git
+        dest: /home/ub/todo
+      ignore_errors: true
+
+    - name: Start server with NodeJS helps
+      command: 'node /home/ub/todo/index.js &'
+
+        
